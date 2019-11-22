@@ -9,8 +9,27 @@
 import SwiftUI
 
 struct ContentView: View {
+	
     var body: some View {
-        Text("Hello, World!")
+		NavigationView {
+			Form {
+				Section(header: HStack {
+					Spacer()
+					Text("Citzen Data c. 1984")}) {
+					NavigationLink(destination: DetailView()) {
+						VStack(alignment: .leading) {
+							Text("Dan O'Leary")
+								.font(.headline)
+							Text("Age: 42")
+							Text("City: Rosemount")
+						}
+					}
+				}
+			}
+			.navigationBarTitle("Ministy of Love")
+			
+		}
+		
     }
 }
 
