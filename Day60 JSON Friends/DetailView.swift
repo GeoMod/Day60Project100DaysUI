@@ -9,15 +9,27 @@
 import SwiftUI
 
 struct DetailView: View {
+	var name: String
+	var company: String
+	var about: String
 	
-	
-    var body: some View {
-		Text("Hello")
-    }
+	var body: some View {
+		VStack(alignment: .leading) {
+			Text("Company: \(company)")
+				.font(.headline)
+				.padding(.bottom)
+			Text("Demographics;")
+				.font(.headline)
+			Text(about)
+			Spacer()
+		}
+		.padding()
+		.navigationBarTitle(name)
+	}
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-		DetailView()
+		DetailView(name: "Dan O'Leary", company: "Impulse Coupled Development", about: "Does things.")
     }
 }

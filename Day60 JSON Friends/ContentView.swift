@@ -18,7 +18,7 @@ struct ContentView: View {
 				Text("c. 1984")})
 			{
 				List(results, id: \.id) { result in
-					NavigationLink(destination: DetailView()) {
+					NavigationLink(destination: DetailView(name: result.name, company: result.company, about: result.about)) {
 						VStack(alignment: .leading) {
 							Text(result.name)
 								.font(.headline)
