@@ -10,30 +10,31 @@ import SwiftUI
 
 struct ContentView: View {
 	@State var results = [CitizenData]()
-		
+	
 	var body: some View {
 		NavigationView {
 			Form { Section(header: HStack {
-					Spacer()
-					Text("c. 1984")})
-				{
+				Spacer()
+				Text("c. 1984")})
+			{
+				List(results, id: \.id) { result in
 					NavigationLink(destination: DetailView()) {
 						VStack(alignment: .leading) {
-							List(results, id: \.id) { result in
-								Text(result.name)
-									.font(.headline)
-								Text("Age: \(result.age)")
-//								Text("Address: \(result.address)")
-							}
+							Text(result.name)
+								.font(.headline)
+							Text("Age: \(result.age)")
+							Text(result.address)
+								.font(.footnote)
 						}
 					}
+				}
 				}
 			}
 			.navigationBarTitle("Ministy of Love")
 			.onAppear(perform: parseJSON)
 		}
 		
-    } // MARK: End of Body
+	} // MARK: End of Body
 	
 	func parseJSON() {
 		guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
@@ -60,6 +61,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+		ContentView()
     }
 }
