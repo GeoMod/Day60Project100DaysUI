@@ -8,10 +8,6 @@
 
 import Foundation
 
-//struct Response: Codable {
-//	var results: [CitizenData]
-//}
-
 struct CitizenData: Codable {
 	var id: String
 	var isActive: Bool
@@ -23,4 +19,9 @@ struct CitizenData: Codable {
 	var about: String
 	var registered: String
 //	let tags: [String]
+}
+
+struct Friends {
+	let id: String
+	let name: String
 }

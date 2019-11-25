@@ -36,6 +36,26 @@ struct ContentView: View {
 		
 	} // MARK: End of Body
 	
+	func loadData() {
+		guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
+			print("Invalid URL")
+			return
+		}
+		let request = URLRequest(url: url)
+		URLSession.shared.dataTask(with: request) { data, response, error in
+			if let data = data {
+				// difference is in the User struct. Switch to the way he built User and test online.
+				if let decodedResponse = try? JSONDecoder().decode([CitizenData].self, from: data) {
+					DispatchQueue.main.async {
+						self.results = decodedResponse
+					}
+					return
+				}
+			}
+			print("Fetch failed")
+		}.resume()
+	}
+	
 	func parseJSON() {
 		guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
 			print("Invalid URL")
