@@ -19,7 +19,13 @@ struct CitizenData: Codable {
 	var about: String
 	var registered: String
 //	let tags: [String]
+	
+	var convertToString: String {
+		let name = "Dan"
+		return name
+	}
 }
+
 
 struct Friends {
 	let id: String

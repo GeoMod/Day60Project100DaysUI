@@ -9,25 +9,25 @@
 import SwiftUI
 
 struct ContentView: View {
+	@Environment(\.managedObjectContext) var moc
 	@State var results = [CitizenData]()
 	
 	var body: some View {
 		NavigationView {
 			Form { Section(header: HStack {
 				Spacer()
-				Text("c. 1984")})
-			{
-				List(results, id: \.id) { result in
-					NavigationLink(destination: DetailView(name: result.name, company: result.company, about: result.about)) {
-						VStack(alignment: .leading) {
-							Text(result.name)
-								.font(.headline)
-							Text("Age: \(result.age)")
-							Text(result.address)
-								.font(.footnote)
+				Text("c. 1984")}) {
+					List(results, id: \.id) { result in
+						NavigationLink(destination: DetailView(name: result.name, company: result.company, about: result.about)) {
+							VStack(alignment: .leading) {
+								Text(result.name)
+									.font(.headline)
+								Text("Age: \(result.age)")
+								Text(result.address)
+									.font(.footnote)
+							}
 						}
 					}
-				}
 				}
 			}
 			.navigationBarTitle("Ministy of Love")
@@ -36,25 +36,6 @@ struct ContentView: View {
 		
 	} // MARK: End of Body
 	
-	func loadData() {
-		guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
-			print("Invalid URL")
-			return
-		}
-		let request = URLRequest(url: url)
-		URLSession.shared.dataTask(with: request) { data, response, error in
-			if let data = data {
-				// difference is in the User struct. Switch to the way he built User and test online.
-				if let decodedResponse = try? JSONDecoder().decode([CitizenData].self, from: data) {
-					DispatchQueue.main.async {
-						self.results = decodedResponse
-					}
-					return
-				}
-			}
-			print("Fetch failed")
-		}.resume()
-	}
 	
 	func parseJSON() {
 		guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
@@ -62,6 +43,8 @@ struct ContentView: View {
 			return
 		}
 		let request = URLRequest(url: url)
+		// MARK: Core data work
+		
 		URLSession.shared.dataTask(with: request) { data, response, error in
 			if let data = data {
 				if let decodedResponse = try? JSONDecoder().decode([CitizenData].self, from: data) {
@@ -69,6 +52,7 @@ struct ContentView: View {
 					DispatchQueue.main.async {
 						// update UI
 						self.results = decodedResponse
+						
 					}
 					return
 				}
@@ -76,6 +60,18 @@ struct ContentView: View {
 			print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
 		}.resume()
 	}
+	
+//	func saveToDevice() {
+	// Core Data
+//		let dataToSave = CitizenCoreData(context: self.moc)
+//
+//		do {
+//			try self.moc.save()
+//		} catch {
+//			print("Error saving moc")
+//		}
+//
+//	}
 	
 }
 
