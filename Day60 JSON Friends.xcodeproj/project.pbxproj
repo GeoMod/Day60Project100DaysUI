@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		186A2AF7238C609F00F09E83 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 186A2AF5238C609F00F09E83 /* Model.xcdatamodeld */; };
+		186A2AF7238C609F00F09E83 /* CitizenCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 186A2AF5238C609F00F09E83 /* CitizenCoreData.xcdatamodeld */; };
 		1874604123884CD10001F859 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874604023884CD10001F859 /* AppDelegate.swift */; };
 		1874604323884CD10001F859 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874604223884CD10001F859 /* SceneDelegate.swift */; };
 		1874604523884CD10001F859 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874604423884CD10001F859 /* ContentView.swift */; };
@@ -68,7 +68,7 @@
 				1874604423884CD10001F859 /* ContentView.swift */,
 				18746056238850630001F859 /* DetailView.swift */,
 				1874604623884CD20001F859 /* Assets.xcassets */,
-				186A2AF5238C609F00F09E83 /* Model.xcdatamodeld */,
+				186A2AF5238C609F00F09E83 /* CitizenCoreData.xcdatamodeld */,
 				1874604B23884CD20001F859 /* LaunchScreen.storyboard */,
 				1874604E23884CD20001F859 /* Info.plist */,
 				1874604823884CD20001F859 /* Preview Content */,
@@ -160,7 +160,7 @@
 				1874604323884CD10001F859 /* SceneDelegate.swift in Sources */,
 				18746057238850630001F859 /* DetailView.swift in Sources */,
 				1874604523884CD10001F859 /* ContentView.swift in Sources */,
-				186A2AF7238C609F00F09E83 /* Model.xcdatamodeld in Sources */,
+				186A2AF7238C609F00F09E83 /* CitizenCoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,13 +356,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		186A2AF5238C609F00F09E83 /* Model.xcdatamodeld */ = {
+		186A2AF5238C609F00F09E83 /* CitizenCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				186A2AF6238C609F00F09E83 /* Model.xcdatamodel */,
 			);
 			currentVersion = 186A2AF6238C609F00F09E83 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			path = CitizenCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

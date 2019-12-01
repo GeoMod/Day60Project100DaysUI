@@ -42,8 +42,8 @@ struct ContentView: View {
 			print("Invalid URL")
 			return
 		}
+		
 		let request = URLRequest(url: url)
-		// MARK: Core data work
 		
 		URLSession.shared.dataTask(with: request) { data, response, error in
 			if let data = data {
@@ -53,6 +53,8 @@ struct ContentView: View {
 						// update UI
 						self.results = decodedResponse
 						
+						// Save to core data
+						self.saveToDevice(data: decodedResponse)
 					}
 					return
 				}
@@ -61,17 +63,24 @@ struct ContentView: View {
 		}.resume()
 	}
 	
-//	func saveToDevice() {
-	// Core Data
-//		let dataToSave = CitizenCoreData(context: self.moc)
-//
-//		do {
-//			try self.moc.save()
-//		} catch {
-//			print("Error saving moc")
-//		}
-//
-//	}
+	func saveToDevice(data: [CitizenData]) {
+		let citizen = CitizenCoreData(context: self.moc)
+		
+		for i in data {
+			citizen.name = i.name
+			citizen.address = i.address
+		}
+
+		if self.moc.hasChanges {
+			do {
+				try self.moc.save()
+				print("Saved!")
+			} catch {
+				print("Error saving moc")
+			}
+		}
+	}
+	
 	
 }
 

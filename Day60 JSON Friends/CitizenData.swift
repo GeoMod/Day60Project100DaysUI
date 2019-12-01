@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 struct CitizenData: Codable {
 	var id: String
 	var isActive: Bool
